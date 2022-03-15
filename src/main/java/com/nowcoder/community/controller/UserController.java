@@ -4,7 +4,6 @@ import com.nowcoder.community.entity.User;
 import com.nowcoder.community.service.UserService;
 import com.nowcoder.community.util.CommunityUtil;
 import com.nowcoder.community.util.HostHolder;
-import javafx.geometry.Pos;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
@@ -116,6 +114,21 @@ public class UserController
         catch (IOException e)
         {
             logger.error("读取头像失败：" + e.getMessage());
+        }
+    }
+
+    @RequestMapping(path = "/updatePassword", method = RequestMethod.POST)
+    public String updatePassword(String oldPassword, String newPassword, Model model)
+    {
+        if(userService.checkPassword(oldPassword))
+        {
+            userService.updatePassword(newPassword);
+            return "redirect:/logout";
+        }
+        else
+        {
+            model.addAttribute("error", "密码错误！");
+            return "/site/setting";
         }
     }
 

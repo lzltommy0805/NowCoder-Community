@@ -6,6 +6,7 @@ import com.nowcoder.community.entity.LoginTicket;
 import com.nowcoder.community.entity.User;
 import com.nowcoder.community.util.CommunityConstant;
 import com.nowcoder.community.util.CommunityUtil;
+import com.nowcoder.community.util.HostHolder;
 import com.nowcoder.community.util.MailClient;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,9 @@ public class UserService implements CommunityConstant
 
     @Autowired
     private LoginTicketMapper loginTicketMapper;
+
+    @Autowired
+    private HostHolder hostHolder;
 
     @Value("${community.path.domain}")
     private String domain;
@@ -183,5 +187,22 @@ public class UserService implements CommunityConstant
     public int updateHeader(int userId, String headerUrl)
     {
         return userMapper.updateHeader(userId, headerUrl);
+    }
+
+    public boolean checkPassword(String oldPassword)
+    {
+        String password = hostHolder.getUser().getPassword();
+        String salt = hostHolder.getUser().getSalt();
+        if(CommunityUtil.md5(oldPassword + salt).equals(password))
+            return true;
+        return false;
+    }
+
+    public void updatePassword(String newPassword)
+    {
+        String salt = hostHolder.getUser().getSalt();
+        int id = hostHolder.getUser().getId();
+        newPassword = (CommunityUtil.md5(newPassword + salt));
+        userMapper.updatePassword(id, newPassword);
     }
 }
