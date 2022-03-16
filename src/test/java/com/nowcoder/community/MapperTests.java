@@ -103,4 +103,21 @@ public class MapperTests {
         System.out.println(loginTicket);
     }
 
+    @Test
+    public void testinsertFields()
+    {
+        DiscussPost post = new DiscussPost();
+        post.setCommentCount(1);
+        post.setContent("sadad");
+        post.setCreateTime(new Date());
+        post.setStatus(1);
+        post.setScore(11);
+        post.setTitle("shfs");
+        post.setUserId(1111);
+        post.setType(1);
+
+        //discussPostMapper.insertDiscussPost(post);
+        discussPostMapper.selectDiscussPosts(1111,0,10);
+    }
+
 }
