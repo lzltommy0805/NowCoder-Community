@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements Comm
                         "/comment/add/**",              //发表评论
                         "/letter/**",                   //私信
                         "/notice/**",                    //通知
-                        "/like",                        //赞
+                        "/like",                        //赞l
                         "/follow",                      //关注
                         "/unfollow"                     //取关
 
