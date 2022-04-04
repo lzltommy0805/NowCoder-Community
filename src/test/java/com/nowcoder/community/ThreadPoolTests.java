@@ -131,8 +131,9 @@ public class ThreadPoolTests
         sleep(30000);
     }
 
+
     //5.Spring线程池简化使用方式
-    @Test
+    //@Test
     public void testThreadPoolTaskExecutorSimple()
     {
         for (int i = 0; i < 10; i++)
@@ -144,7 +145,7 @@ public class ThreadPoolTests
     }
 
     //5.Spring定时任务线程池简化使用方式
-    @Test
+    //@Test
     public void testThreadPoolTaskSchedulerSimple()
     {
         sleep(30000);

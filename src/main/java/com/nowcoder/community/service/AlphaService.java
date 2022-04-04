@@ -126,13 +126,13 @@ public class AlphaService {
 
 
     //@Async  可以让该方法在多线程环境下被异步调用
-    @Async
+    //@Async
     public void execute1()
     {
         logger.debug("execute1");
     }
 
-    @Scheduled(initialDelay = 10000, fixedRate = 1000)
+    //@Scheduled(initialDelay = 10000, fixedRate = 1000)
     public void execute2()
     {
         logger.debug("execute2");
