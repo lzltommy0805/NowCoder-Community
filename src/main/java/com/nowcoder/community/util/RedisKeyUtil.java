@@ -12,6 +12,7 @@ public class RedisKeyUtil
     public static final String PREFIX_USER = "user";
     public static final String PREFIX_UV = "uv";
     public static final String PREFIX_DAU = "dau";
+    public static final String PREFIX_POST = "post";
 
 
 
@@ -85,5 +86,10 @@ public class RedisKeyUtil
     public static String getDAUKey(String startDate, String endDate)
     {
         return PREFIX_DAU + SPLIT + startDate + SPLIT + endDate;
+    }
+    //帖子分数
+    public static String getPOstScoreKey()
+    {
+        return PREFIX_POST + SPLIT + "score";
     }
 }

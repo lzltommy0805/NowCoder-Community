@@ -76,7 +76,7 @@ public class MapperTests {
 
     @Test
     public void testSelectPosts() {
-        List<DiscussPost> list = discussPostMapper.selectDiscussPosts(149, 0, 10);
+        List<DiscussPost> list = discussPostMapper.selectDiscussPosts(149, 0, 10,0);
         for(DiscussPost post : list) {
             System.out.println(post);
         }
@@ -122,7 +122,7 @@ public class MapperTests {
         post.setType(1);
 
         //discussPostMapper.insertDiscussPost(post);
-        discussPostMapper.selectDiscussPosts(1111,0,10);
+        discussPostMapper.selectDiscussPosts(1111,0,10,0);
     }
 
     @Test
